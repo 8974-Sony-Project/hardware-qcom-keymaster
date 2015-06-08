@@ -15,7 +15,8 @@ LOCAL_MODULE_RELATIVE_PATH := hw
 
 LOCAL_SRC_FILES := keymaster_qcom.cpp
 
-LOCAL_C_INCLUDES := $(TARGET_OUT_HEADERS)/common/inc
+LOCAL_C_INCLUDES := $(TARGET_OUT_HEADERS)/common/inc \
+                    $(TARGET_OUT_INTERMEDIATES)/KERNEL_OBJ/usr/include
 
 LOCAL_CFLAGS := $(keymaster-def)
 
@@ -25,7 +26,9 @@ LOCAL_SHARED_LIBRARIES := \
         libc \
         libdl
 
-LOCAL_ADDITIONAL_DEPENDENCIES := $(LOCAL_PATH)/Android.mk
+LOCAL_ADDITIONAL_DEPENDENCIES := \
+    $(TARGET_OUT_INTERMEDIATES)/KERNEL_OBJ/usr \
+    $(LOCAL_PATH)/Android.mk
 
 LOCAL_MODULE_TAGS := optional
 
